@@ -11,7 +11,7 @@ env:
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
 
 jobs:
-  test:
+  macos:
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -24,8 +24,27 @@ jobs:
         working-directory: playwright-project
         run: npm i
 
-      - name: Saucectl RUN Docker and Cloud
-        uses: saucelabs/saucectl-run-action@v3
+      - uses: saucelabs/saucectl-run-action@v3
+        with:
+          sauce-username: ${{ secrets.SAUCE_USERNAME }}
+          sauce-access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
+          working-directory: ./playwright-project/
+          concurrency: 2
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install deps
+        run: npm i
+
+      - name: Install linked-deps
+        working-directory: playwright-project
+        run: npm i
+
+      - uses: saucelabs/saucectl-run-action@v3
         with:
           sauce-username: ${{ secrets.SAUCE_USERNAME }}
           sauce-access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
