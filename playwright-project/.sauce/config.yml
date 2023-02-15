@@ -1,0 +1,39 @@
+apiVersion: v1alpha
+kind: playwright
+defaults:
+  mode: sauce
+sauce:
+  region: us-west-1
+  concurrency: 1
+  metadata:
+    tags:
+      - e2e
+      - release team
+      - other tag
+playwright:
+  version: 1.29.2
+  configFile: playwright.config.js
+
+rootDir: ./
+suites:
+  - name: "Chromium Mac"
+    platformName: "macOS 12"
+    screenResolution: "1440x900"
+    testMatch: ['.*.js']
+    params:
+      browserName: "chromium"
+      project: "chromium"
+  - name: "Chromium Win"
+    platformName: "Windows 11"
+    screenResolution: "1440x900"
+    testMatch: ['.*.js']
+    params:
+      browserName: "chromium"
+      project: "chromium"
+  # - name: "Webkit Win"
+  #   platformName: "Windows 11"
+  #   screenResolution: "1440x900"
+  #   testMatch: ['.*.js']
+  #   params:
+  #     browserName: "webkit"
+  #     project: "webkit"
