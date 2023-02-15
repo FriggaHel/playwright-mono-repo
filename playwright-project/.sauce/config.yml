@@ -16,14 +16,14 @@ playwright:
 
 rootDir: ./
 suites:
-  - name: "Chromium Mac"
+  - name: "Chromium - link - Mac"
     platformName: "macOS 12"
     screenResolution: "1440x900"
     testMatch: ['.*.js']
     params:
       browserName: "chromium"
       project: "chromium"
-  - name: "Chromium Win"
+  - name: "Chromium - link - Win"
     platformName: "Windows 11"
     screenResolution: "1440x900"
     testMatch: ['.*.js']
