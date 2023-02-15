@@ -24,6 +24,10 @@ jobs:
         working-directory: playwright-project
         run: npm i
 
+      - name: Show linked-deps
+        working-directory: playwright-project
+        run: ls -la ./node_modules/
+
       - uses: saucelabs/saucectl-run-action@v3
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -45,6 +49,10 @@ jobs:
       - name: Install linked-deps
         working-directory: playwright-project
         run: npm i
+
+      - name: Show linked-deps
+        working-directory: playwright-project
+        run: Get-ChildItem -Recurse -Path ./node_modules/
 
       - uses: saucelabs/saucectl-run-action@v3
         env:
