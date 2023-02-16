@@ -62,3 +62,56 @@ jobs:
           sauce-access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
           working-directory: ./playwright-project/
           concurrency: 2
+
+
+  macosin-depth:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install deps
+        run: npm i
+
+      - name: Install linked-deps
+        working-directory: playwright-project
+        run: npm i
+
+      - name: Show linked-deps
+        working-directory: playwright-project
+        run: ls -la ./node_modules/
+
+      - uses: saucelabs/saucectl-run-action@v3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          sauce-username: ${{ secrets.SAUCE_USERNAME }}
+          sauce-access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
+          working-directory: ./playwright-project/subproject/
+          concurrency: 2
+
+  windows-in-depth:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install deps
+        run: npm i
+
+      - name: Install linked-deps
+        working-directory: playwright-project
+        run: npm i
+
+      - name: Show linked-deps
+        working-directory: playwright-project
+        run: Get-ChildItem -Recurse -Path ./node_modules/
+
+      - uses: saucelabs/saucectl-run-action@v3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          sauce-username: ${{ secrets.SAUCE_USERNAME }}
+          sauce-access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
+          working-directory: ./playwright-project/subproject/
+          concurrency: 2
