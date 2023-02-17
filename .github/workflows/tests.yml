@@ -28,7 +28,7 @@ jobs:
         working-directory: playwright-project
         run: ls -la ./node_modules/
 
-      - uses: saucelabs/saucectl-run-action@v3
+      - uses: saucelabs/saucectl-run-action@6a3e74d65212bce42174ba47de9fbf168f5d1f2a
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -54,7 +54,7 @@ jobs:
         working-directory: playwright-project
         run: Get-ChildItem -Recurse -Path ./node_modules/
 
-      - uses: saucelabs/saucectl-run-action@v3
+      - uses: saucelabs/saucectl-run-action@6a3e74d65212bce42174ba47de9fbf168f5d1f2a
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -81,7 +81,7 @@ jobs:
         working-directory: playwright-project
         run: ls -la ./node_modules/
 
-      - uses: saucelabs/saucectl-run-action@v3
+      - uses: saucelabs/saucectl-run-action@6a3e74d65212bce42174ba47de9fbf168f5d1f2a
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -107,7 +107,7 @@ jobs:
         working-directory: playwright-project
         run: Get-ChildItem -Recurse -Path ./node_modules/
 
-      - uses: saucelabs/saucectl-run-action@v3
+      - uses: saucelabs/saucectl-run-action@6a3e74d65212bce42174ba47de9fbf168f5d1f2a
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
